@@ -1,0 +1,373 @@
+/* Body */
+body {
+    margin:0px;
+}
+
+/* --- Classes --- */
+/* --- Bloc styles --- */
+.main_style {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+    background-color: black;
+    box-shadow: 5px 5px 10px black;
+}
+
+.footer_style {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    background-color: black;
+}
+
+.transparence {
+    opacity: 90%;
+}
+
+/* Titles styles */
+.sub_title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+    background-color: chocolate;
+    border-radius: 20px;
+    border: 1px solid white;
+    text-align: center;
+}
+
+/* Links Styles */
+.link_header {
+    text-decoration: none;
+    font-style: normal;
+    color: black    ;
+}
+
+.link_main_menu {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.link_main_menu:hover {
+    background-color: chocolate;
+    border-radius: 20px;
+}
+
+.link_secondary_menu {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    font-size: 1.2em;
+    padding: 2px;
+}
+
+.link {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    font-size: 0.8em;
+    font-style: italic;
+    padding: 5px;
+}
+
+.link:hover {
+    text-decoration: underline;
+    background-color: chocolate;
+}
+/*  --- Fin Classes --- */
+
+/* --- Header --- */
+header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 200px;
+    background: url("../images/header/header_picture.png")  no-repeat left;
+}
+
+header > p { 
+    font-weight: bold;
+    font-size: 3em;
+}
+
+header > img {
+    border-radius: 20px;    
+}
+/* --- Fin Header --- */
+
+/* --- Menus --- */
+/* --- Main Menu --- */
+#main_menu {
+    border-top: 1px dotted black;
+    margin: auto;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+#main_menu > ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+}
+
+#main_menu li > a {
+    text-decoration: none;
+}
+
+/* Secondary_menu */
+#secondary_menu > ul {
+    list-style-type: circle;
+}
+
+/* Social Menu*/
+#social_menu > ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+
+#social_menu ul > li {
+    padding: 0 10px;
+}
+/* --- Fin Menus --- */
+
+/* --- Main --- */
+main {
+    background: url("../images/main/fond.jpg") no-repeat top fixed;
+}
+/* --- Fin Main --- */
+
+/* --- Section --- */
+section > h1 {
+    font-size: 2.5em;
+    margin: 10px 0 10px 20px;
+    padding-left: 10px;
+}
+
+section > p {
+    width:75%;
+    padding: 10px;
+    margin-left: 20px;
+    font-size: 1.2em;
+}
+
+section > h2 {
+    width: 50%;
+    margin: 20px;
+    padding: 10px;
+    text-align: start;
+}
+/* --- Fin Section --- */
+
+/* --- Elements communs --- */
+#content {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* --- article --- */
+article {
+    padding: 20px;
+}   
+
+article > h3 {
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+/* --- Fin article --- */
+/* --- Fin Elements communs --- */
+
+/* --- Index.html --- */
+article > ul {
+    list-style-type: square;
+}
+
+article li {
+    font-size: 1.5em;
+}
+
+/* Pour avoir de belles icones dans la liste numérotée décommenter le bloc dessous */
+/*
+article > ol li:nth-of-type(1) { list-style-image: url("../images/icons/moto.png"); }
+article > ol li:nth-of-type(2) { list-style-image: url("../images/icons/bike.png"); }
+article > ol li:nth-of-type(3) { list-style-image: url("../images/icons/aircraft.png"); }
+article > ol li:nth-of-type(4) { list-style-image: url("../images/icons/laptop.png"); }
+article > ol li:nth-of-type(5) { list-style-image: url("../images/icons/photo.png"); }
+article > ol li:nth-of-type(6) { list-style-image: url("../images/icons/pen.png"); }
+article > ol li:nth-of-type(7) { list-style-image: url("../images/icons/music.png"); }
+*/
+
+table tr > th {
+    text-decoration: underline;
+    color: red;
+}
+
+table {
+    padding: 5px;
+}
+
+table tr > td {
+    border-bottom: 2px solid white;
+}
+
+table tr > td:nth-of-type(1) {
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+    border : 2px solid white;
+    padding: 5px;
+}
+
+table tr > td:nth-of-type(2) {
+    font-size: 1.2em;
+    padding-left: 10px;
+}
+/* --- Fin Index.html --- */
+
+/* --- Hobby.html --- */
+article > p {
+    width: 500px;
+    font-size: 1em;
+}
+
+#movie > iframe {
+    border: 2px solid white;
+    display: block;
+}
+
+article a {
+    font-style: italic;
+    text-decoration: underline;
+}
+
+article a:hover {
+    border-radius: 20px;
+}
+/* --- Fin Hobby.html --- */
+
+/* --- Contact.html --- */
+
+/* --- Formulaire --- */
+form {
+    width: 500px;
+    font-weight: bold;
+}
+
+.champs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.champs label {
+    padding-right: 10px;
+}
+
+.champs input {
+    width: 300px;
+}
+
+#radio_buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    height: 50px;
+    align-items: center;
+}
+
+#radio_buttons label {
+    margin-left: 5px;
+}
+
+#radio_buttons input {
+    margin-left: 20px;
+}
+
+#select_list {
+    margin-bottom: 10px;
+}
+
+#select_list label {
+    display: inline-block;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+#select_list select {
+    width: 100%;
+}
+
+#message {
+    margin-bottom: 10px;
+}
+
+#message label {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+#message textarea {
+    width: 100%;
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 10px;
+}
+
+#buttons button {
+    border-radius: 50px;
+    padding: 10px;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: chocolate;
+    color: white;
+}
+
+#buttons button:hover {
+    background-color: lightyellow;
+    color: black;
+}
+
+/* Mail contact*/
+#mail_picture {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+/* --- Fin Contact.html --- */
+
+/* --- Footer --- */
+footer {
+    display: flex;
+    justify-content: space-evenly;
+    height: 150px;
+    align-items: center;
+    margin-top: 10px;   
+}
+
+footer nav > h3 {
+    text-align: center;
+    text-decoration: underline;
+    font-size: 20px;
+}
+
+footer nav {
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+    padding: 0 100px;
+}
+
+footer nav li a {
+    font-size: 1em;    
+    text-decoration: none;
+}
+
+footer nav li a:hover {
+    background-color: chocolate;
+}
+
+footer p {
+    font-size: 0.8em;
+    text-align: center;
+}
+/* --- Fin Footer --- */
