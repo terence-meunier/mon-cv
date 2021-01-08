@@ -1,4 +1,8 @@
-<?php include 'header.php'; ?>
+<?php
+$metaTitle = "Hobby";
+$metaDescription = "Venez découvrir ma page hobby.";
+include 'header.php';
+?>
 
 <main>
     <section>

@@ -1,4 +1,8 @@
-<?php include 'header.php' ?>
+<?php
+$metaTitle = "Profil";
+$metaDescription = "Contactez-moi";
+include 'header.php';
+?>
 
 <main>
     <section>

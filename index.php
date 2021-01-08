@@ -1,5 +1,8 @@
-<!-- On ajoute le header à la page -->
-<?php include 'header.php' ?>
+<?php
+    $metaTitle = "Profil";
+    $metaDescription = "Venez découvrir le profil de mon CV.";
+    include 'header.php';
+?>
 <main>
     <section>
         <h1 class="main_style">Mon Profil</h1>
