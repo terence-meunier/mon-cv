@@ -28,3 +28,6 @@
         Tous droits réservés - @copyright 2020 - version 1.0
     </p>
 </footer>
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 <?php
 $metaTitle = "Contact";
 $metaDescription = "Contactez-moi";
-include 'header.php';
+require 'header.php';
 ?>
 
 <main>
@@ -66,8 +66,4 @@ include 'header.php';
     </section>
 </main>
 
-<?php include 'footer.php'; ?>
-
-</body>
-
-</html>
+<?php require 'footer.php'; ?>
