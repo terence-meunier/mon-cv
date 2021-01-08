@@ -1,5 +1,5 @@
 <?php
-$metaTitle = "Profil";
+$metaTitle = "Contact";
 $metaDescription = "Contactez-moi";
 include 'header.php';
 ?>
