@@ -11,12 +11,9 @@
     <nav id="social_menu">
         <h3>Liens Sociaux</h3>
         <ul>
-            <li><a href=""><img src="../images/social_icons/facebook.png" width=50 height=50 alt="Lien facebook"></a>
-            </li>
-            <li><a href=""><img src="../images/social_icons/instagram.png" width=50 height=50 alt="Lien instagram"></a>
-            </li>
-            <li><a href=""><img src="../images/social_icons/linked.png" width=50 height=50 alt="Lien linkedIn"></a>
-            </li>
+            <li><a href=""><img src="../images/social_icons/facebook.png" width=50 height=50 alt="Lien facebook"></a></li>
+            <li><a href=""><img src="../images/social_icons/instagram.png" width=50 height=50 alt="Lien instagram"></a></li>
+            <li><a href=""><img src="../images/social_icons/linked.png" width=50 height=50 alt="Lien linkedIn"></a></li>
             <li><a href=""><img src="../images/social_icons/snapchat.png" width=50 height=50 alt="Lien snap"></a></li>
         </ul>
     </nav>
