@@ -12,7 +12,8 @@
 </head>
 
 <body>
-<!-- header.php -->
+<!-- On ajoute le header à la page -->
+<?php include 'header.php' ?>
 <main>
     <section>
         <h1 class="main_style">Mon Profil</h1>
@@ -101,7 +102,8 @@
     </section>
 </main>
 
-<!-- Footer -->
+<!-- On ajoute le footer à la page -->
+<?php include 'footer.php'; ?>
 </body>
 
 </html>
