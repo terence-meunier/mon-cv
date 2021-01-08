@@ -2,9 +2,9 @@
     <nav id="secondary_menu">
         <h3>Plan du site</h3>
         <ul>
-            <li><a href="index.html" class="link_secondary_menu">Mon Profil</a></li>
-            <li><a href="hobby.html" class="link_secondary_menu">Mon Hobby</a></li>
-            <li><a href="contact.html" class="link_secondary_menu">Contact</a></li>
+            <li><a href="index.php" class="link_secondary_menu">Mon Profil</a></li>
+            <li><a href="hobby.php" class="link_secondary_menu">Mon Hobby</a></li>
+            <li><a href="contact.php" class="link_secondary_menu">Contact</a></li>
         </ul>
     </nav>
 

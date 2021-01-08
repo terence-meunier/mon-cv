@@ -5,8 +5,8 @@
 
 <nav id="main_menu" class="main_style">
     <ul>
-        <li><a href="index.html" class="link_main_menu">Mon Profil</a></li>
-        <li><a href="hobby.html" class="link_main_menu">Mon Hobby</a></li>
-        <li><a href="contact.html" class="link_main_menu">Contact</a></li>
+        <li><a href="index.php" class="link_main_menu">Mon Profil</a></li>
+        <li><a href="hobby.php" class="link_main_menu">Mon Hobby</a></li>
+        <li><a href="contact.php" class="link_main_menu">Contact</a></li>
     </ul>
 </nav>
