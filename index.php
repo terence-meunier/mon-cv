@@ -1,6 +1,6 @@
 <?php
-    $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_SPECIAL_CHARS);
-    if (isset($page)) {
+    $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING);
+    if ($page) {
         switch ($page) {
             case 'profil':
                 require 'pages/profil.php';
