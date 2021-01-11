@@ -19,6 +19,8 @@
                 $metaDescription = 'Page contact de mon CV';
                 break;
             default :
+                $metaTitle = 'Erreur 404 - Page Introuvable';
+                $metaDescription = 'Page introuvable';
                 $http_code = 404;
         }
     } else {
@@ -28,7 +30,9 @@
     }
 
     if ($http_code != 200) {
+        require 'pages' . DIRECTORY_SEPARATOR . 'header.php';
         require  'error' . DIRECTORY_SEPARATOR . $http_code . '.php';
+        require 'pages' . DIRECTORY_SEPARATOR . 'footer.php';
     } else {
         require 'pages' . DIRECTORY_SEPARATOR . 'header.php';
         require 'pages' . DIRECTORY_SEPARATOR . $page_include . '.php';
