@@ -251,6 +251,12 @@ form {
     font-weight: bold;
 }
 
+.error_message {
+    color: red;
+    font-size: 10px;
+    font-style: italic;
+}
+
 .champs {
     display: flex;
     justify-content: center;
