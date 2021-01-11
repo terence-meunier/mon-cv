@@ -36,3 +36,27 @@ All notable changes to this project will be documented in this file.
 - File "contact.html"
 - File "hobby.html"
 - File "index.html"
+
+### [1.1.0] - 2021-01-08
+### Added
+- .gitignore => Untracked config folder
+
+### Updated
+- styles/styles.css => new color for the main style
+- index.html => Add Git competences
+
+## [1.2.0] - 2021-01-10
+### Delete
+- index.html
+- hobby.html
+- contact.html
+
+### Added
+- index.php -> Front Controller
+- pages/profil.php
+- pages/hobby.php
+- pages/contact.php
+- error/404.php
+- core/header.php
+- core/footer.php
+- contact/ => For storage the form contact
