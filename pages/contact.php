@@ -39,8 +39,15 @@ if (isset($datas['message_text']) && empty($datas['message_text'])) {
     $messageIsEmpty = false;
 }
 
+// Verification de l'adresse email valide
+if (isset($datas['contact_email']) && filter_var($datas['contact_email'], FILTER_VALIDATE_EMAIL)) {
+    $emailIsValid = true;
+} else {
+    $emailIsValid = false;
+}
+
 // Enregistrement du fichier
-if ($datas && !$lastnameIsEmpty && !$firstnameIsEmpty && !$emailIsEmpty && !$messageIsEmpty) {
+if ($datas && !$lastnameIsEmpty && !$firstnameIsEmpty && !$emailIsEmpty && !$messageIsEmpty && $emailIsValid) {
     // Création du nom du fichier
     $file = 'contact/contact_' . date('Y-m-d-H-i-s') . '.txt';
 
@@ -78,13 +85,14 @@ if ($datas && !$lastnameIsEmpty && !$firstnameIsEmpty && !$emailIsEmpty && !$mes
                         <input type="text" id="contact_lastname" name="contact_lastname"
                                placeholder="Tapez votre nom ici..." value="<?= $datas['contact_lastname'] ?>">
                     </div>
-                    <p class="error_message"><?php if($lastnameIsEmpty) { echo 'Champ prénom vide'; } ?></p>
+                    <p class="error_message"><?php if($firstnameIsEmpty) { echo 'Champ prénom vide'; } ?></p>
                     <div class="champs">
                         <label for="contact_firstname">Votre Prénom : </label>
                         <input type="text" id="contact_firstname" name="contact_firstname"
                                placeholder="Tapez votre Prénom..." value="<?= $datas['contact_firstname'] ?>">
                     </div>
-                    <p class="error_message"><?php if($lastnameIsEmpty) { echo 'Champ email vide'; } ?></p>
+                    <p class="error_message"><?php if($emailIsEmpty) { echo 'Champ email vide'; } ?></p>
+                    <p class="error_message"><?php if(isset($datas['contact_email']) && !$emailIsValid) { echo 'Email non valide'; } ?></p>
                     <div class="champs">
                         <label for="contact_email">Votre adresse mail : </label>
                         <input type="text" id="contact_email" name="contact_email"
@@ -98,7 +106,7 @@ if ($datas && !$lastnameIsEmpty && !$firstnameIsEmpty && !$emailIsEmpty && !$mes
                                value="demande d'information et prestations">
                         <label for="info_prestations">Demande d'information et prestations</label>
                     </div>
-                    <p class="error_message"><?php if($lastnameIsEmpty) { echo 'Champ message vide'; } ?></p>
+                    <p class="error_message"><?php if($messageIsEmpty) { echo 'Champ message vide'; } ?></p>
                     <div id="message">
                         <label for="message_text">Votre message :</label>
                         <textarea name="message_text" id="message_text" cols="50"
