@@ -112,7 +112,7 @@ if ($datas && !$lastnameIsEmpty && !$firstnameIsEmpty && !$emailIsEmpty && !$mes
             <article class="main_style transparence ">
                 <h3 class="sub_title">Envoyez moi un Email</h3>
                 <div id="mail_picture">
-                    <a href="mailto:contact@mondomaine.fr"><img src="../images/contact/mail.png" width=100 height=100
+                    <a href="mailto:contact@mondomaine.fr"><img src="images/contact/mail.png" width=100 height=100
                                                                 alt="Enveloppe"></a>
                     <a href="mailto:contact@mondomaine.fr" class="link_secondary_menu">contact@mondomaine.fr</a>
                 </div>
