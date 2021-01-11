@@ -13,8 +13,34 @@ $args = [
 // Application des filtres sur POST
 $datas = filter_input_array(INPUT_POST, $args);
 
+// Test si les champ sont vide
+// Champ Nom
+if (isset($datas['contact_lastname']) && empty($datas['contact_lastname'])) {
+    $lastnameIsEmpty = true;
+} else {
+    $lastnameIsEmpty = false;
+}
+// Champ Prénom
+if (isset($datas['contact_firstname']) && empty($datas['contact_firstname'])) {
+    $firstnameIsEmpty = true;
+} else {
+    $firstnameIsEmpty = false;
+}
+// Champ email
+if (isset($datas['contact_email']) && empty($datas['contact_email'])) {
+    $emailIsEmpty = true;
+} else {
+    $emailIsEmpty = false;
+}
+// Champ message
+if (isset($datas['message_text']) && empty($datas['message_text'])) {
+    $messageIsEmpty = true;
+} else {
+    $messageIsEmpty = false;
+}
+
 // Enregistrement du fichier
-if ($datas) {
+if ($datas && !$lastnameIsEmpty && !$firstnameIsEmpty && !$emailIsEmpty && !$messageIsEmpty) {
     // Création du nom du fichier
     $file = 'contact/contact_' . date('Y-m-d-H-i-s') . '.txt';
 
@@ -46,20 +72,23 @@ if ($datas) {
                             <option value="Mme">Madame</option>
                         </select>
                     </div>
+                    <p class="error_message"><?php if($lastnameIsEmpty) { echo 'Champ nom vide'; } ?></p>
                     <div class="champs">
                         <label for="contact_lastname">Votre Nom : </label>
                         <input type="text" id="contact_lastname" name="contact_lastname"
-                               placeholder="Tapez votre nom ici...">
+                               placeholder="Tapez votre nom ici..." value="<?= $datas['contact_lastname'] ?>">
                     </div>
+                    <p class="error_message"><?php if($lastnameIsEmpty) { echo 'Champ prénom vide'; } ?></p>
                     <div class="champs">
                         <label for="contact_firstname">Votre Prénom : </label>
                         <input type="text" id="contact_firstname" name="contact_firstname"
-                               placeholder="Tapez votre Prénom...">
+                               placeholder="Tapez votre Prénom..." value="<?= $datas['contact_firstname'] ?>">
                     </div>
+                    <p class="error_message"><?php if($lastnameIsEmpty) { echo 'Champ email vide'; } ?></p>
                     <div class="champs">
                         <label for="contact_email">Votre adresse mail : </label>
-                        <input type="email" id="contact_email" name="contact_email"
-                               placeholder="Tapez votre adresse email ici...">
+                        <input type="text" id="contact_email" name="contact_email"
+                               placeholder="Tapez votre adresse email ici..." value="<?= $datas['contact_email'] ?>">
                     </div>
                     <div id="radio_buttons">
                         <label>raison du contact :</label>
@@ -69,13 +98,13 @@ if ($datas) {
                                value="demande d'information et prestations">
                         <label for="info_prestations">Demande d'information et prestations</label>
                     </div>
+                    <p class="error_message"><?php if($lastnameIsEmpty) { echo 'Champ message vide'; } ?></p>
                     <div id="message">
                         <label for="message_text">Votre message :</label>
                         <textarea name="message_text" id="message_text" cols="50"
-                                  rows="10" placeholder="Tapez votre message ici..."></textarea>
+                                  rows="10" placeholder="Tapez votre message ici..."><?= $datas['message_text'] ?></textarea>
                     </div>
                     <div id="buttons">
-                        <button type="reset">Réinitialiser le formulaire</button>
                         <button type="submit">Envoyer le formulaire</button>
                     </div>
                 </form>
