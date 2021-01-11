@@ -22,7 +22,9 @@
                 $http_code = 404;
         }
     } else {
-     require 'pages/profil.php';
+        $page_include = 'profil';
+        $metaTitle = 'Profil';
+        $metaDescription = 'Page profil de mon CV';
     }
 
     if ($http_code != 200) {
@@ -30,4 +32,5 @@
     } else {
         require 'pages' . DIRECTORY_SEPARATOR . 'header.php';
         require 'pages' . DIRECTORY_SEPARATOR . $page_include . '.php';
+        require 'pages' . DIRECTORY_SEPARATOR . 'footer.php';
     }
