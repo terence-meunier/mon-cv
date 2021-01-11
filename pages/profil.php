@@ -1,8 +1,3 @@
-<?php
-    $metaTitle = "Profil";
-    $metaDescription = "Venez découvrir le profil de mon CV.";
-    require 'header.php';
-?>
 <main>
     <section>
         <h1 class="main_style">Mon Profil</h1>
@@ -90,6 +85,3 @@
         </div>
     </section>
 </main>
-
-<!-- On ajoute le footer à la page -->
-<?php require 'footer.php'; ?>

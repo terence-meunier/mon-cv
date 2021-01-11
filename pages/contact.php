@@ -1,9 +1,3 @@
-<?php
-$metaTitle = "Contact";
-$metaDescription = "Contactez-moi";
-require 'header.php';
-?>
-
 <main>
     <section>
         <h1 class="main_style">Contactez moi !</h1>
@@ -65,5 +59,3 @@ require 'header.php';
         </div>
     </section>
 </main>
-
-<?php require 'footer.php'; ?>

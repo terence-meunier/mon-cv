@@ -1,9 +1,3 @@
-<?php
-$metaTitle = "Hobby";
-$metaDescription = "Venez découvrir ma page hobby.";
-require 'header.php';
-?>
-
 <main>
     <section>
         <h1 class="main_style">Mon Hobby</h1>
@@ -42,5 +36,3 @@ require 'header.php';
         </div>
     </section>
 </main>
-
-<?php require 'footer.php'; ?>
