@@ -30,11 +30,11 @@
     }
 
     if ($http_code != 200) {
-        require 'pages' . DIRECTORY_SEPARATOR . 'header.php';
+        require 'core' . DIRECTORY_SEPARATOR . 'header.php';
         require  'error' . DIRECTORY_SEPARATOR . $http_code . '.php';
-        require 'pages' . DIRECTORY_SEPARATOR . 'footer.php';
+        require 'core' . DIRECTORY_SEPARATOR . 'footer.php';
     } else {
-        require 'pages' . DIRECTORY_SEPARATOR . 'header.php';
+        require 'core' . DIRECTORY_SEPARATOR . 'header.php';
         require 'pages' . DIRECTORY_SEPARATOR . $page_include . '.php';
-        require 'pages' . DIRECTORY_SEPARATOR . 'footer.php';
+        require 'core' . DIRECTORY_SEPARATOR . 'footer.php';
     }
