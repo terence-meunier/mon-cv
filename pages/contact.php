@@ -1,3 +1,31 @@
+<?php
+// Traitement du formulaire
+// Tableau de filtres
+$args = [
+    'gender' => FILTER_SANITIZE_STRING,
+    'contact_lastname' => FILTER_SANITIZE_STRING,
+    'contact_firstname' => FILTER_SANITIZE_STRING,
+    'contact_email' => FILTER_SANITIZE_EMAIL,
+    'contact_subject' => FILTER_SANITIZE_STRING,
+    'message_text' => FILTER_SANITIZE_STRING
+];
+
+// Application des filtres sur POST
+$datas = filter_input_array(INPUT_POST, $args);
+
+// Enregistrement du fichier
+if ($datas) {
+    // Création du nom du fichier
+    $file = 'contact/contact_' . date('Y-m-d-H-i-s') . '.txt';
+
+    // Ajout des données au fichier et gestion d'une variable d'information si le message est enregistré
+    if (file_put_contents($file, implode(' | ', $datas))) {
+        $info_msg = "Votre message est enregistré";
+    } else {
+        $info_msg = "Erreur d'enregistrement du message";
+    }
+}
+?>
 <main>
     <section>
         <h1 class="main_style">Contactez moi !</h1>
@@ -6,36 +34,40 @@
         <h2 class="main_style">Vous pouvez me contactez par mail ou par le biais du formulaire de contact</h2>
         <div id="content">
             <article class="main_style transparence">
+                <p><?php if (isset($info_msg)) {
+                        echo $info_msg;
+                    } ?></p>
                 <h3 class="sub_title">Formulaire de Contact</h3>
-                <form action="https://httpbin.org/post" method="POST" target="_blank">
-                    <div class="champs">
-                        <label for="contact_name">Votre Nom : </label>
-                        <input type="text" id="contact_name" name="contact_name"
-                               placeholder="Tapez votre nom et prénom ici..." required>
+                <form action="index.php?page=contact" method="POST">
+                    <div id="select_list">
+                        <label for="gender">Genre : </label>
+                        <select name="gender" id="gender">
+                            <option value="Mr">Monsieur</option>
+                            <option value="Mme">Madame</option>
+                        </select>
                     </div>
                     <div class="champs">
-                        <label for="contact_email">Votre @-mail : </label>
+                        <label for="contact_lastname">Votre Nom : </label>
+                        <input type="text" id="contact_lastname" name="contact_lastname"
+                               placeholder="Tapez votre nom ici...">
+                    </div>
+                    <div class="champs">
+                        <label for="contact_firstname">Votre Prénom : </label>
+                        <input type="text" id="contact_firstname" name="contact_firstname"
+                               placeholder="Tapez votre Prénom...">
+                    </div>
+                    <div class="champs">
+                        <label for="contact_email">Votre adresse mail : </label>
                         <input type="email" id="contact_email" name="contact_email"
-                               placeholder="Tapez votre adresse email ici..." required>
+                               placeholder="Tapez votre adresse email ici...">
                     </div>
                     <div id="radio_buttons">
-                        <label>Vous êtes :</label>
-                        <input type="radio" id="particular" name="contact_type" value="particulier" checked>
-                        <label for="particular">Un Particulier</label>
-                        <input type="radio" id="pro" name="contact_type" value="pro">
-                        <label for="pro">Un Professionnel</label>
-                        <input type="radio" id="other" name="contact_type" value="autres">
-                        <label for="other">Autres</label>
-                    </div>
-                    <div id="select_list">
-                        <label for="message_subject">Quel est l'objet de votre message : </label>
-                        <select name="message_subject" id="message_subject">
-                            <option value="contact">Contactez-moi</option>
-                            <option value="devis">Besoin d'un Devis</option>
-                            <option value="sav">Service Après-Vente</option>
-                            <option value="reclamation">Une Réclamation</option>
-                            <option value="other">Autres</option>
-                        </select>
+                        <label>raison du contact :</label>
+                        <input type="radio" id="emploi" name="contact_subject" value="proposition d'emploi" checked>
+                        <label for="emploi">Proposition d'emploi</label>
+                        <input type="radio" id="info_prestations" name="contact_subject"
+                               value="demande d'information et prestations">
+                        <label for="info_prestations">Demande d'information et prestations</label>
                     </div>
                     <div id="message">
                         <label for="message_text">Votre message :</label>
