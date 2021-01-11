@@ -12,7 +12,7 @@
                 require 'pages/contact.php';
                 break;
             default :
-                require 'pages/profil.php';
+                require 'pages/404.php';
         }
     } else {
      require 'pages/profil.php';
