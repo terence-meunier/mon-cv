@@ -22,6 +22,8 @@
     <p>
         Première connexion le : <?= $_SESSION['dateFirstVisit'] ?>
         <br>
+        Nombres de pages visitées : <?= $_SESSION['countViewPages'] ?>
+        <br>
         <br>
         Ce site est développé et maintenu par Térence MEUNIER - Futur Dev'Web
         <br>
