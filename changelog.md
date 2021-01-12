@@ -60,3 +60,9 @@ All notable changes to this project will be documented in this file.
 - core/header.php
 - core/footer.php
 - contact/ => For storage the form contact
+
+## [1.3.1] - 2021-01-12
+### Updated
+- pages/contact.php => update for secure form in php
+- footer.php => update label version to 1.2 at 1.3
+- changelog.md
