@@ -7,6 +7,7 @@ $formSent = filter_has_var(INPUT_POST, 'gender')
     && filter_has_var(INPUT_POST,'contact_subject')
     && filter_has_var(INPUT_POST,'message_text');
 
+// Si le formulaire à bien été envoyé avec tous les champs nécessaire, on fait le traitement
 if ($formSent) {
     // Nettoyage des données réceptionnées
     $args = [
@@ -34,18 +35,23 @@ if ($formSent) {
     $isEmailEmpty = empty($datas['contact_email']);
     // Champ message
     $isMessageEmpty = empty($datas['message_text']);
+
     // Verifier si l'adresse email est valide
     if ($datas['contact_email']) {
         $isEmailValid = true;
     } else {
         $isEmailValid = false;
     }
+
     // Verifier si le message fait au moins 5 caractères
     $isMin5car = strlen($datas['message_text']) >= 5;
+
     // Verifier si le genre renseigné est "Mr" ou "Mme"
     $isGenderValid = ($datas['gender'] === "Mr") || ($datas['gender'] === "Mme");
+
     // Verifier si le sujet renseigné est "proposition emploi" ou "demande information et prestations"
     $isSubjectValid = ($datas['contact_subject'] === "proposition emploi") || ($datas['contact_subject'] === "demande information et prestations");
+
     // Enregistrement dans le fichier texte dans le dossier /contact sous la forme "contact_2020-01-12-09-52-00.txt"
     if ($isClean && !$isLastnameEmpty && !$isFirstnameEmpty && !$isEmailEmpty && !$isMessageEmpty && $isEmailValid && $isMin5car && $isGenderValid && $isSubjectValid) {
         // Envoyer les données dans le fichier texte
