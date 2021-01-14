@@ -1,12 +1,6 @@
 <?php
 // Testé si le formulaire à été envoyé avec tous les champs nécessaire
-$formSent = filter_has_var(INPUT_POST, 'gender')
-    && filter_has_var(INPUT_POST, 'contact_lastname')
-    && filter_has_var(INPUT_POST, 'contact_firstname')
-    && filter_has_var(INPUT_POST, 'contact_email')
-    && filter_has_var(INPUT_POST, 'contact_subject')
-    && filter_has_var(INPUT_POST, 'message_text')
-    && filter_has_var(INPUT_POST, 'contact_pseudo');
+$formSent = filter_has_var(INPUT_POST, 'gender');
 
 // Si le formulaire à bien été envoyé avec tous les champs nécessaire, on fait le traitement
 if ($formSent) {
@@ -41,11 +35,7 @@ if ($formSent) {
     ];
 
     // On teste si le nettoyage c'est bien passé
-    if ($datas = filter_input_array(INPUT_POST, $args)) {
-        $isClean = true;
-    } else {
-        $isClean = false;
-    }
+    $datas = filter_input_array(INPUT_POST, $args);
 
     // Testé si les champs sont renseignés (champs vides)
     // Champ nom
@@ -56,19 +46,19 @@ if ($formSent) {
     }
     // Champ prénom
     if (empty($datas['contact_firstname'])) {
-        $formErrors['contact_firstname'] = 'Le champ nom est vide';
+        $formErrors['contact_firstname'] = 'Le champ prénom est vide';
     } else {
         $formErrors['contact_firstname'] = false;
     }
     // Champ email
     if (empty($datas['contact_email'])) {
-        $formErrors['contact_email'] = 'Le champ nom est vide';
+        $formErrors['contact_email'] = 'Le champ email est vide';
     } else {
         $formErrors['contact_email'] = false;
     }
     // Champ message
     if (empty($datas['message_text'])) {
-        $formErrors['message_text'] = 'Le champ nom est vide';
+        $formErrors['message_text'] = 'Le champ message est vide';
     } else {
         $formErrors['message_text'] = false;
     }
@@ -108,14 +98,12 @@ if ($formSent) {
     }
 
     // Enregistrement dans le fichier texte dans le dossier /contact sous la forme "contact_2020-01-12-09-52-00.txt"
-    if ($isClean
-        && !$formErrors['gender']
+    if (!$formErrors['gender']
         && !$formErrors['contact_lastname']
         && !$formErrors['contact_firstname']
         && !$formErrors['contact_pseudo']
         && !$formErrors['contact_email']
         && !$formErrors['message_text']
-        && !$formErrors['contact_email_valid']
         && !$formErrors['min5car']
         && !$formErrors['contact_subject']) {
         // Envoyer les données dans le fichier texte
