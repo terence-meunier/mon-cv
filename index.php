@@ -1,40 +1,23 @@
 <?php
-    $http_code = 200;
-    $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING);
-    if ($page) {
-        switch ($page) {
-            case 'profil':
-                $page_include = 'profil';
-                $metaTitle = 'Profil';
-                $metaDescription = 'Page profil de mon CV';
-                break;
-            case 'hobby':
-                $page_include = 'hobby';
-                $metaTitle = 'Hobby';
-                $metaDescription = 'Page hobby de mon CV';
-                break;
-            case 'contact':
-                $page_include = 'contact';
-                $metaTitle = 'Contact';
-                $metaDescription = 'Page contact de mon CV';
-                break;
-            default :
-                $metaTitle = 'Erreur 404 - Page Introuvable';
-                $metaDescription = 'Page introuvable';
-                $http_code = 404;
-        }
+require 'config/config.php';
+$page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING);
+if ($page) {
+    if (array_key_exists($page,$routes)) {
+        $metaTitle = $titles[$page];
+        $metaDescription = $descriptions[$page];
+        $route = $page;
     } else {
-        $page_include = 'profil';
-        $metaTitle = 'Profil';
-        $metaDescription = 'Page profil de mon CV';
+        $metaTitle = $titles['error404'];
+        $metaDescription = $descriptions['error404'];
+        $route = 'error404';
     }
+} else {
+    $metaTitle = $titles['profil'];
+    $metaDescription = $descriptions['profil'];
+    $route = 'profil';
+}
 
-    if ($http_code != 200) {
-        require 'core' . DIRECTORY_SEPARATOR . 'header.php';
-        require  'error' . DIRECTORY_SEPARATOR . $http_code . '.php';
-        require 'core' . DIRECTORY_SEPARATOR . 'footer.php';
-    } else {
-        require 'core' . DIRECTORY_SEPARATOR . 'header.php';
-        require 'pages' . DIRECTORY_SEPARATOR . $page_include . '.php';
-        require 'core' . DIRECTORY_SEPARATOR . 'footer.php';
-    }
+// Appel de la route
+require 'core/header.php';
+require $routes[$route];
+require 'core/footer.php';
