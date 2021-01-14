@@ -5,7 +5,8 @@ $formSent = filter_has_var(INPUT_POST, 'gender')
     && filter_has_var(INPUT_POST, 'contact_firstname')
     && filter_has_var(INPUT_POST, 'contact_email')
     && filter_has_var(INPUT_POST, 'contact_subject')
-    && filter_has_var(INPUT_POST, 'message_text');
+    && filter_has_var(INPUT_POST, 'message_text')
+    && filter_has_var(INPUT_POST, 'contact_pseudo');
 
 // Si le formulaire à bien été envoyé avec tous les champs nécessaire, on fait le traitement
 if ($formSent) {
@@ -15,6 +16,7 @@ if ($formSent) {
         'gender' => false,
         'contact_lastname' => false,
         'contact_firstname' => false,
+        'contact_pseudo' => false,
         'contact_email' => false,
         'contact_email_valid' => false,
         'contact_subject' => false,
@@ -32,6 +34,7 @@ if ($formSent) {
         'gender' => FILTER_SANITIZE_STRING,
         'contact_lastname' => FILTER_SANITIZE_STRING,
         'contact_firstname' => FILTER_SANITIZE_STRING,
+        'contact_pseudo' => FILTER_SANITIZE_STRING,
         'contact_email' => FILTER_VALIDATE_EMAIL,
         'contact_subject' => FILTER_SANITIZE_STRING,
         'message_text' => FILTER_SANITIZE_STRING
@@ -69,6 +72,12 @@ if ($formSent) {
     } else {
         $formErrors['message_text'] = false;
     }
+    // Champ pseudo
+    if (empty($datas['contact_pseudo'])) {
+        $formErrors['contact_pseudo'] = 'Le champ pseudo est vide';
+    } else {
+        $formErrors['contact_pseudo'] = false;
+    }
 
     // Verifier si l'adresse email est valide
     if ($datas['contact_email']) {
@@ -103,6 +112,7 @@ if ($formSent) {
         && !$formErrors['gender']
         && !$formErrors['contact_lastname']
         && !$formErrors['contact_firstname']
+        && !$formErrors['contact_pseudo']
         && !$formErrors['contact_email']
         && !$formErrors['message_text']
         && !$formErrors['contact_email_valid']
@@ -120,6 +130,7 @@ if ($formSent) {
             $datas['contact_firstname'] = '';
             $datas['contact_email'] = '';
             $datas['message_text'] = '';
+            $datas['contact_pseudo'] = '';
         } else {
             $formInfos['msg_info'] = 'Erreur d\'écriture du fichier';
         }
@@ -168,6 +179,12 @@ if ($formSent) {
                         <label for="contact_email">Votre adresse mail : </label>
                         <input type="text" id="contact_email" name="contact_email"
                                placeholder="Tapez votre adresse email ici...">
+                    </div>
+                    <p class="error_message"><?= (isset($formErrors['contact_pseudo']) && $formErrors['contact_pseudo']) ? $formErrors['contact_pseudo'] : '' ?></p>
+                    <div class="champs">
+                        <label for="contact_pseudo">Votre pseudo : </label>
+                        <input type="text" id="contact_pseudo" name="contact_pseudo"
+                               placeholder="Tapez votre pseudo ici..." value="<?= isset($datas['contact_pseudo']) ? $datas['contact_pseudo'] : '' ?>">
                     </div>
                     <p class="error_message"><?= (isset($formErrors['contact_subject']) && $formErrors['contact_subject']) ? $formErrors['contact_subject'] : '' ?></p>
                     <div id="radio_buttons">
