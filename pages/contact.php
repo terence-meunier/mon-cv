@@ -1,15 +1,12 @@
 <?php
 if (isset($_SESSION['errorsMsg'])) {
     $formErrors = $_SESSION['errorsMsg'];
-    var_dump($formErrors);
 }
 if (isset($_SESSION['infosMsg'])) {
     $formInfos = $_SESSION['infosMsg'];
-    var_dump($formInfos);
 }
 if (isset($_SESSION['datas'])) {
     $datas = $_SESSION['datas'];
-    var_dump($datas);
 }
 ?>
 <main>
