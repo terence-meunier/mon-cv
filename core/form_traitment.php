@@ -142,4 +142,3 @@ if (!$formErrors['gender']
     header("Location: /?page=contact");
     exit();
 }
-?>
