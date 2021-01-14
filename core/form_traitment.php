@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Tableau des messages d'erreurs
 $formErrors = [
     'gender' => false,
@@ -104,7 +105,7 @@ if (!$formErrors['gender']
     // On écrit le chemin du fichier
     $file = 'contact/contact_' . date('Y-m-d-H-i-s') . '.txt';
     // Ecriture du fichier
-    if (file_put_contents($file, implode(' - ', $datas))) {
+    if (file_put_contents($file, implode(PHP_EOL, $datas))) {
         // Message d'information - Tout s'est bien passé
         $formInfos['msg_info'] = 'Les informations ont bien été enregistrées';
         // On vide le formulaire
@@ -122,7 +123,7 @@ if (!$formErrors['gender']
     $_SESSION['errorsMsg'] = $formErrors;
     $_SESSION['infosMsg'] = $formInfos;
     $_SESSION['datas'] = $datas;
-    var_dump($_SESSION);
-    //header("Location: /?page=contact");
+    header("Location: /?page=contact");
+    exit;
 }
 ?>
