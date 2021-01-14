@@ -61,6 +61,11 @@ if ($formSent) {
         if (file_put_contents($file, implode(' - ', $datas))) {
             // Message d'information - Tout s'est bien passé
             $msg_info = "Votre message à bien été envoyé";
+            // On vide le formulaire
+            $datas['contact_lastname'] = '';
+            $datas['contact_firstname'] = '';
+            $datas['contact_email'] = '';
+            $datas['message_text'] = '';
         } else {
             $msg_info = "Erreur d'écriture du fichier";
         }
@@ -108,8 +113,7 @@ if ($formSent) {
                     <div class="champs">
                         <label for="contact_email">Votre adresse mail : </label>
                         <input type="text" id="contact_email" name="contact_email"
-                               placeholder="Tapez votre adresse email ici..."
-                               value="<?= isset($datas['contact_email']) ? $datas['contact_email'] : '' ?>">
+                               placeholder="Tapez votre adresse email ici...">
                     </div>
                     <p class="error_message"><?= (isset($datas['contact_subject']) && !$isSubjectValid) ? $datas['contact_subject'] . 'n\'est pas une donnée valide petit malin^^' : '' ?></p>
                     <div id="radio_buttons">
