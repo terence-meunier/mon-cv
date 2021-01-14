@@ -1,4 +1,5 @@
 <?php
+// Démarrage de la session PHP
 session_start();
 // Date et heure de la première connexion
 if (!isset($_SESSION['dateFirstVisit'])) {
