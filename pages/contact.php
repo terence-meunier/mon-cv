@@ -1,5 +1,5 @@
 <?php
-// Testé si le formulaire à été envoyé
+// Testé si le formulaire à été envoyé avec tous les champs nécessaire
 $formSent = filter_has_var(INPUT_POST, 'gender')
     && filter_has_var(INPUT_POST, 'contact_lastname')
     && filter_has_var(INPUT_POST, 'contact_firstname')
