@@ -1,6 +1,11 @@
 <?php
 // Testé si le formulaire à été envoyé
-$formSent = filter_has_var(INPUT_POST, 'gender');
+$formSent = filter_has_var(INPUT_POST, 'gender')
+    && filter_has_var(INPUT_POST, 'contact_lastname')
+    && filter_has_var(INPUT_POST, 'contact_firstname')
+    && filter_has_var(INPUT_POST,'contact_email')
+    && filter_has_var(INPUT_POST,'contact_subject')
+    && filter_has_var(INPUT_POST,'message_text');
 
 if ($formSent) {
     // Nettoyage des données réceptionnées
@@ -8,12 +13,17 @@ if ($formSent) {
         'gender' => FILTER_SANITIZE_STRING,
         'contact_lastname' => FILTER_SANITIZE_STRING,
         'contact_firstname' => FILTER_SANITIZE_STRING,
-        'contact_email' => FILTER_SANITIZE_EMAIL,
+        'contact_email' => FILTER_VALIDATE_EMAIL,
         'contact_subject' => FILTER_SANITIZE_STRING,
         'message_text' => FILTER_SANITIZE_STRING
     ];
 
-    $datas = filter_input_array(INPUT_POST, $args);
+    // On teste si le nettoyage c'est bien passé
+    if ($datas = filter_input_array(INPUT_POST, $args)) {
+        $isClean = true;
+    } else {
+        $isClean = false;
+    }
 
     // Testé si les champs sont renseignés (champs vides)
     // Champ nom
@@ -25,8 +35,7 @@ if ($formSent) {
     // Champ message
     $isMessageEmpty = empty($datas['message_text']);
     // Verifier si l'adresse email est valide
-    if (filter_var($datas['contact_email'], FILTER_VALIDATE_EMAIL)) {
-        $datas['contact_email'] = filter_var($datas['contact_email']);
+    if ($datas['contact_email']) {
         $isEmailValid = true;
     } else {
         $isEmailValid = false;
@@ -38,7 +47,7 @@ if ($formSent) {
     // Verifier si le sujet renseigné est "proposition emploi" ou "demande information et prestations"
     $isSubjectValid = ($datas['contact_subject'] === "proposition emploi") || ($datas['contact_subject'] === "demande information et prestations");
     // Enregistrement dans le fichier texte dans le dossier /contact sous la forme "contact_2020-01-12-09-52-00.txt"
-    if (!$isLastnameEmpty && !$isFirstnameEmpty && !$isEmailEmpty && !$isMessageEmpty && $isEmailValid && $isMin5car && $isGenderValid && $isSubjectValid) {
+    if ($isClean && !$isLastnameEmpty && !$isFirstnameEmpty && !$isEmailEmpty && !$isMessageEmpty && $isEmailValid && $isMin5car && $isGenderValid && $isSubjectValid) {
         // Envoyer les données dans le fichier texte
         // On écrit le chemin du fichier
         $file = 'contact/contact_' . date('Y-m-d-H-i-s') . '.txt';
@@ -88,7 +97,7 @@ if ($formSent) {
                                placeholder="Tapez votre Prénom..."
                                value="<?= isset($datas['contact_firstname']) ? $datas['contact_firstname'] : '' ?>">
                     </div>
-                    <p class="error_message"><?= (isset($isEmailEmpty) && $isEmailEmpty) ? 'Champ prénom vide' : '' ?></p>
+                    <p class="error_message"><?= (isset($isEmailEmpty) && $isEmailEmpty) ? 'Champ email vide' : '' ?></p>
                     <p class="error_message"><?= (isset($isEmailValid) && !$isEmailValid) ? 'Email non valide' : '' ?></p>
                     <div class="champs">
                         <label for="contact_email">Votre adresse mail : </label>
