@@ -1,18 +1,3 @@
-<?php
-// Démarrage de la session PHP
-session_start();
-// Date et heure de la première connexion
-if (!isset($_SESSION['dateFirstVisit'])) {
-    $_SESSION['dateFirstVisit'] = date('Y-m-d H:i:s');
-}
-
-// Nombre de pages visiter
-if (!isset($_SESSION['countViewPages'])) {
-    $_SESSION['countViewPages'] = 1;
-} else {
-    $_SESSION['countViewPages']++;
-}
-?>
 <!DOCTYPE html>
 <html lang="fr">
 

@@ -1,4 +1,17 @@
 <?php
+session_start();
+// Date et heure de la première connexion
+if (!isset($_SESSION['dateFirstVisit'])) {
+    $_SESSION['dateFirstVisit'] = date('Y-m-d H:i:s');
+}
+
+// Nombre de pages visiter
+if (!isset($_SESSION['countViewPages'])) {
+    $_SESSION['countViewPages'] = 1;
+} else {
+    $_SESSION['countViewPages']++;
+}
+
 require 'config/config.php';
 $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING);
 if ($page) {
