@@ -103,19 +103,33 @@ if (!$formErrors['gender']
     && !$formErrors['contact_subject']) {
     // Envoyer les données dans le fichier texte
     // On écrit le chemin du fichier
-    $file = 'contact/contact_' . date('Y-m-d-H-i-s') . '.txt';
+    $file = '../contact/contact_' . date('Y-m-d-H-i-s') . '.txt';
     // Ecriture du fichier
     if (file_put_contents($file, implode(PHP_EOL, $datas))) {
         // Message d'information - Tout s'est bien passé
-        $formInfos['msg_info'] = 'Les informations ont bien été enregistrées';
+        $formInfos['msg_info'] = 'Merci, votre message à bien été pris en compte';
         // On vide le formulaire
         $datas['contact_lastname'] = '';
         $datas['contact_firstname'] = '';
         $datas['contact_email'] = '';
         $datas['message_text'] = '';
         $datas['contact_pseudo'] = '';
+        // On passe les variables à la session
+        $_SESSION['infosMsg'] = $formInfos;
+        // On supprime les variables de la session
+        unset($_SESSION['errorsMsg']);
+        unset($_SESSION['datas']);
+        // Redirection
+        header("Location: /?page=contact");
     } else {
+        // Message d'information - Il y a eu une erreur dans l'écriture du fichier
         $formInfos['msg_info'] = 'Erreur d\'écriture du fichier';
+        // On passe les variables à la session
+        $_SESSION['errorsMsg'] = $formErrors;
+        $_SESSION['infosMsg'] = $formInfos;
+        $_SESSION['datas'] = $datas;
+        // Et on redirige
+        header("Location: /?page=contact");
     }
 } else {
     // Message d'information - Erreur dans les données
