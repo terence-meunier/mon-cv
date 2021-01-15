@@ -66,3 +66,16 @@ All notable changes to this project will be documented in this file.
 - pages/contact.php => update for secure form in php
 - footer.php => update label version to 1.2 at 1.3
 - changelog.md
+
+## [1.4.1] - 2021-01-15
+### Added
+- config.php => file contents the routes, titles and description for the page sites
+- core/form_traitment.php => traitment for the form of the contact page
+
+### Updated
+- index.php (Front controller) : Using Session and refactor the code of the front controller for the route integration
+- header.php : Documentation the new version of code (v1.4.1)
+- footer.php : Add DateFirstVisit and a CountViewPage
+
+## Deleted
+- contact.php : Delete the traitment code for the form and deplace in form_traitment.php
