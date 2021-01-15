@@ -31,6 +31,9 @@ if ($page) {
 }
 
 // Call the route
+ob_start();
 require 'core/header.php';
 require $routes[$route];
 require 'core/footer.php';
+$buffer = ob_get_clean();
+echo $buffer;
