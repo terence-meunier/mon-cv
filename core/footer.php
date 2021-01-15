@@ -28,7 +28,7 @@
         Ce site est développé et maintenu par Térence MEUNIER - Futur Dev'Web
         <br>
         <br>
-        Tous droits réservés - @copyright 2020 - version 1.5
+        Tous droits réservés - @copyright 2020 - version 1.5.1
     </p>
 </footer>
 </body>
