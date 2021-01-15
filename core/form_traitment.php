@@ -43,30 +43,35 @@ if (filter_has_var(INPUT_POST, 'gender')) {
         $formErrors['contact_lastname'] = 'Le champ nom est vide';
     } else {
         $formErrors['contact_lastname'] = false;
+        $datas['contact_lastname'] = trim($datas['contact_lastname']);
     }
 // Champ prénom
     if (empty(trim($datas['contact_firstname'])) || trim($datas['contact_firstname'] == "0")) {
         $formErrors['contact_firstname'] = 'Le champ prénom est vide';
     } else {
         $formErrors['contact_firstname'] = false;
+        $datas['contact_firstname'] = trim($datas['contact_firstname']);
     }
 // Champ email
     if (empty(trim($datas['contact_email'])) || trim($datas['contact_email'] == "0")) {
         $formErrors['contact_email'] = 'Le champ email est vide';
     } else {
         $formErrors['contact_email'] = false;
+        $datas['contact_email'] = trim($datas['contact_email']);
     }
 // Champ message
     if (empty(trim($datas['message_text'])) || trim($datas['message_text'] == "0")) {
         $formErrors['message_text'] = 'Le champ message est vide';
     } else {
         $formErrors['message_text'] = false;
+        $datas['message_text'] = trim($datas['message_text']);
     }
 // Champ pseudo
     if (empty(trim($datas['contact_pseudo'])) || trim($datas['contact_pseudo'] == "0")) {
         $formErrors['contact_pseudo'] = 'Le champ pseudo est vide';
     } else {
         $formErrors['contact_pseudo'] = false;
+        $datas['contact_pseudo'] = trim($datas['contact_pseudo']);
     }
 
 // Verifier si l'adresse email est valide
@@ -126,7 +131,8 @@ if (filter_has_var(INPUT_POST, 'gender')) {
             unset($_SESSION['errorsMsg']);
             unset($_SESSION['datas']);
             // Redirection
-            header("Location: /?page=contact");
+            $redirectUrl = dirname($_SERVER['PHP_SELF'], 2) . '/?page=contact';
+            header("Location: $redirectUrl");
             exit;
         } else {
             // Message d'information - Il y a eu une erreur dans l'écriture du fichier
@@ -135,7 +141,8 @@ if (filter_has_var(INPUT_POST, 'gender')) {
             $_SESSION['errorsMsg'] = $formErrors;
             $_SESSION['infosMsg'] = $formInfos;
             // Et on redirige
-            header("Location: /?page=contact");
+            $redirectUrl = dirname($_SERVER['PHP_SELF'], 2) . '/?page=contact';
+            header("Location: $redirectUrl");
             exit;
         }
     } else {
