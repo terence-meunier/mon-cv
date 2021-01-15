@@ -24,48 +24,51 @@ $args = [
     'contact_lastname' => FILTER_SANITIZE_STRING,
     'contact_firstname' => FILTER_SANITIZE_STRING,
     'contact_pseudo' => FILTER_SANITIZE_STRING,
-    'contact_email' => FILTER_VALIDATE_EMAIL,
+    'contact_email' => FILTER_SANITIZE_EMAIL,
     'contact_subject' => FILTER_SANITIZE_STRING,
     'message_text' => FILTER_SANITIZE_STRING
 ];
 
 // On teste si le nettoyage c'est bien passé
+$datasSanitize = filter_input_array(INPUT_POST, $args);
 $datas = filter_input_array(INPUT_POST, $args);
+$_SESSION['datas'] = $datasSanitize;
+
 
 // Testé si les champs sont renseignés (champs vides)
 // Champ nom
-if (empty($datas['contact_lastname'])) {
+if (empty(trim($datas['contact_lastname'])) || trim($datas['contact_lastname'] == "0")) {
     $formErrors['contact_lastname'] = 'Le champ nom est vide';
 } else {
     $formErrors['contact_lastname'] = false;
 }
 // Champ prénom
-if (empty($datas['contact_firstname'])) {
+if (empty(trim($datas['contact_firstname'])) || trim($datas['contact_firstname'] == "0")) {
     $formErrors['contact_firstname'] = 'Le champ prénom est vide';
 } else {
     $formErrors['contact_firstname'] = false;
 }
 // Champ email
-if (empty($datas['contact_email'])) {
+if (empty(trim($datas['contact_email'])) || trim($datas['contact_email'] == "0")) {
     $formErrors['contact_email'] = 'Le champ email est vide';
 } else {
     $formErrors['contact_email'] = false;
 }
 // Champ message
-if (empty($datas['message_text'])) {
+if (empty(trim($datas['message_text'])) || trim($datas['message_text'] == "0")) {
     $formErrors['message_text'] = 'Le champ message est vide';
 } else {
     $formErrors['message_text'] = false;
 }
 // Champ pseudo
-if (empty($datas['contact_pseudo'])) {
+if (empty(trim($datas['contact_pseudo'])) || trim($datas['contact_pseudo'] == "0")) {
     $formErrors['contact_pseudo'] = 'Le champ pseudo est vide';
 } else {
     $formErrors['contact_pseudo'] = false;
 }
 
 // Verifier si l'adresse email est valide
-if ($datas['contact_email']) {
+if (filter_var($datas['contact_email'], FILTER_VALIDATE_EMAIL)) {
     $formErrors['contact_email_valid'] = false;
 } else {
     $formErrors['contact_email_valid'] = 'Email non valide';
@@ -98,6 +101,7 @@ if (!$formErrors['gender']
     && !$formErrors['contact_firstname']
     && !$formErrors['contact_pseudo']
     && !$formErrors['contact_email']
+    && !$formErrors['contact_email_valid']
     && !$formErrors['message_text']
     && !$formErrors['min5car']
     && !$formErrors['contact_subject']) {
@@ -128,7 +132,6 @@ if (!$formErrors['gender']
         // On passe les variables à la session
         $_SESSION['errorsMsg'] = $formErrors;
         $_SESSION['infosMsg'] = $formInfos;
-        $_SESSION['datas'] = $datas;
         // Et on redirige
         header("Location: /?page=contact");
         exit;
@@ -138,7 +141,6 @@ if (!$formErrors['gender']
     $formInfos['msg_info'] = 'Des données du formulaire à envoyé ne sont pas valide';
     $_SESSION['errorsMsg'] = $formErrors;
     $_SESSION['infosMsg'] = $formInfos;
-    $_SESSION['datas'] = $datas;
-    header("Location: /?page=contact");
+     header("Location: /?page=contact");
     exit;
 }

@@ -1,12 +1,15 @@
 <?php
 if (isset($_SESSION['errorsMsg'])) {
     $formErrors = $_SESSION['errorsMsg'];
+    unset($_SESSION['errorsMsg']);
 }
 if (isset($_SESSION['infosMsg'])) {
     $formInfos = $_SESSION['infosMsg'];
+    unset($_SESSION['infosMsg']);
 }
 if (isset($_SESSION['datas'])) {
     $datas = $_SESSION['datas'];
+    unset($_SESSION['datas']);
 }
 ?>
 <main>
@@ -47,7 +50,7 @@ if (isset($_SESSION['datas'])) {
                     <div class="champs">
                         <label for="contact_email">Votre adresse mail : </label>
                         <input type="text" id="contact_email" name="contact_email"
-                               placeholder="Tapez votre adresse email ici...">
+                               placeholder="Tapez votre adresse email ici..." value="<?= isset($datas['contact_email']) ? $datas['contact_email'] : '' ?>">
                     </div>
                     <p class="error_message"><?= (isset($formErrors['contact_pseudo']) && $formErrors['contact_pseudo']) ? $formErrors['contact_pseudo'] : '' ?></p>
                     <div class="champs">
