@@ -1,11 +1,11 @@
 <?php
 session_start();
-// Date et heure de la première connexion
+// Date and Hour for the first connection
 if (!isset($_SESSION['dateFirstVisit'])) {
     $_SESSION['dateFirstVisit'] = date('Y-m-d H:i:s');
 }
 
-// Nombre de pages visiter
+// Count of view page
 if (!isset($_SESSION['countViewPages'])) {
     $_SESSION['countViewPages'] = 1;
 } else {
@@ -30,7 +30,7 @@ if ($page) {
     $route = 'profil';
 }
 
-// Appel de la route
+// Call the route
 require 'core/header.php';
 require $routes[$route];
 require 'core/footer.php';
