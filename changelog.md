@@ -89,3 +89,10 @@ All notable changes to this project will be documented in this file.
 ## [1.5.1] - 2021-01-15
 ## Updated
 - core/form_traitment.php : Add condition for form submit
+
+## [1.5.2] - 2021-01-15
+## Updated
+- core/form_traitment.php : Update redirection url
+- core/header.php : fix link for the style sheet
+- core/header.php : fix links ressources
+- core/footer.php : fix links menu
