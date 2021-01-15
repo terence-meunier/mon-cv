@@ -85,3 +85,7 @@ All notable changes to this project will be documented in this file.
 - index.php : Use Buffering
 - core/traitment : add trim and zero values for the text field and add a array data for autocompletion
 - page/contact.php : unset session variable
+
+## [1.5.1] - 2021-01-15
+## Updated
+- core/form_traitment.php : Add condition for form submit
