@@ -143,7 +143,8 @@ if (filter_has_var(INPUT_POST, 'gender')) {
         $formInfos['msg_info'] = 'Des données du formulaire à envoyé ne sont pas valide';
         $_SESSION['errorsMsg'] = $formErrors;
         $_SESSION['infosMsg'] = $formInfos;
-        header("Location: /?page=contact");
+        $redirectUrl = dirname($_SERVER['PHP_SELF'], 2) . '/?page=contact';
+        header("Location: $redirectUrl");
         exit;
     }
 }
