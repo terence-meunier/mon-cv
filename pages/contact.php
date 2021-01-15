@@ -22,7 +22,7 @@ if (isset($_SESSION['datas'])) {
             <article class="main_style transparence">
                 <h3 class="sub_title">Formulaire de Contact</h3>
                 <p class="error_message"><?= isset($formInfos['msg_info']) ? $formInfos['msg_info'] : '' ?></p>
-                <form action="../core/form_traitment.php" method="POST">
+                <form action="<?= dirname($_SERVER['PHP_SELF']) ?>/core/form_traitment.php" method="POST">
                     <p class="error_message"><?= (isset($formErrors['gender']) && $formErrors['gender']) ? $formErrors['gender'] : '' ?></p>
                     <div id="select_list">
                         <label for="gender">Genre : </label>
