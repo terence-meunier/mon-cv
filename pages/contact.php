@@ -22,7 +22,7 @@ if (isset($_SESSION['datas'])) {
             <article class="main_style transparence">
                 <h3 class="sub_title">Formulaire de Contact</h3>
                 <p class="error_message"><?= isset($formInfos['msg_info']) ? $formInfos['msg_info'] : '' ?></p>
-                <form action="<?= dirname($_SERVER['PHP_SELF']) ?>/core/form_traitment.php" method="POST">
+                <form action="core/form_traitment.php" method="POST">
                     <p class="error_message"><?= (isset($formErrors['gender']) && $formErrors['gender']) ? $formErrors['gender'] : '' ?></p>
                     <div id="select_list">
                         <label for="gender">Genre : </label>
@@ -84,7 +84,7 @@ if (isset($_SESSION['datas'])) {
             <article class="main_style transparence ">
                 <h3 class="sub_title">Envoyez moi un Email</h3>
                 <div id="mail_picture">
-                    <a href="mailto:contact@mondomaine.fr"><img src="../images/contact/mail.png" width=100 height=100
+                    <a href="mailto:contact@mondomaine.fr"><img src="images/contact/mail.png" width=100 height=100
                                                                 alt="Enveloppe"></a>
                     <a href="mailto:contact@mondomaine.fr" class="link_secondary_menu">contact@mondomaine.fr</a>
                 </div>
