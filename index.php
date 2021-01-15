@@ -22,6 +22,7 @@ if ($page) {
     } else {
         $metaTitle = $titles['error404'];
         $metaDescription = $descriptions['error404'];
+        http_response_code(404);
         $route = 'error404';
     }
 } else {
@@ -31,9 +32,13 @@ if ($page) {
 }
 
 // Call the route
+// Buffering
 ob_start();
+// Add in the buffering
 require 'core/header.php';
 require $routes[$route];
 require 'core/footer.php';
+// Stock buffering and clean
 $buffer = ob_get_clean();
+// Display buffering
 echo $buffer;
