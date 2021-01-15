@@ -1,6 +1,8 @@
 <?php
 session_start();
 // Date and Hour for the first connection
+// Choose the Europe/Paris timezone for default
+date_default_timezone_set('Europe/Paris');
 if (!isset($_SESSION['dateFirstVisit'])) {
     $_SESSION['dateFirstVisit'] = date('Y-m-d H:i:s');
 }
