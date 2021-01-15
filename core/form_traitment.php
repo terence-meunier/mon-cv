@@ -114,6 +114,7 @@ if (filter_has_var(INPUT_POST, 'gender')) {
         && !$formErrors['contact_subject']) {
         // Envoyer les données dans le fichier texte
         // On écrit le chemin du fichier
+        date_default_timezone_set('Europe/Paris');
         $file = '../contact/contact_' . date('Y-m-d-H-i-s') . '.txt';
         // Ecriture du fichier
         if (file_put_contents($file, implode(PHP_EOL, $datas))) {
