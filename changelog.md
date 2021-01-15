@@ -64,7 +64,7 @@ All notable changes to this project will be documented in this file.
 ## [1.3.1] - 2021-01-12
 ### Updated
 - pages/contact.php => update for secure form in php
-- footer.php => update label version to 1.2 at 1.3
+- core/footer.php => update label version to 1.2 at 1.3
 - changelog.md
 
 ## [1.4.1] - 2021-01-15
@@ -74,8 +74,14 @@ All notable changes to this project will be documented in this file.
 
 ### Updated
 - index.php (Front controller) : Using Session and refactor the code of the front controller for the route integration
-- header.php : Documentation the new version of code (v1.4.1)
-- footer.php : Add DateFirstVisit and a CountViewPage
+- core/header.php : Documentation the new version of code (v1.4.1)
+- core/footer.php : Add DateFirstVisit and a CountViewPage
 
 ## Deleted
-- contact.php : Delete the traitment code for the form and deplace in form_traitment.php
+- page/contact.php : Delete the traitment code for the form and deplace in form_traitment.php
+
+## [1.5] - 2021-01-15
+## Updated
+- index.php : Use Buffering
+- core/traitment : add trim and zero values for the text field and add a array data for autocompletion
+- page/contact.php : unset session variable
