@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Térence Meunier">
     <meta name="description" content="<?= isset($metaDescription) ? $metaDescription : 'Page sans description' ?>">
-    <link rel="stylesheet" href="../styles/styles.css" type="text/css">
+    <link rel="stylesheet" href="<?= dirname($_SERVER['PHP_SELF']) ?>/styles/styles.css" type="text/css">
     <title>Térence MEUNIER - <?= isset($metaTitle) ? $metaTitle : 'Mon CV' ?></title>
 </head>
 
