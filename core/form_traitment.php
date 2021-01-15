@@ -121,7 +121,7 @@ if (!$formErrors['gender']
         unset($_SESSION['datas']);
         // Redirection
         header("Location: /?page=contact");
-        exit();
+        exit;
     } else {
         // Message d'information - Il y a eu une erreur dans l'écriture du fichier
         $formInfos['msg_info'] = 'Erreur d\'écriture du fichier';
@@ -131,7 +131,7 @@ if (!$formErrors['gender']
         $_SESSION['datas'] = $datas;
         // Et on redirige
         header("Location: /?page=contact");
-        exit();
+        exit;
     }
 } else {
     // Message d'information - Erreur dans les données
@@ -140,5 +140,5 @@ if (!$formErrors['gender']
     $_SESSION['infosMsg'] = $formInfos;
     $_SESSION['datas'] = $datas;
     header("Location: /?page=contact");
-    exit();
+    exit;
 }
